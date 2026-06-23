@@ -771,7 +771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
   m_sharedMaterial: {fileID: -6953417924433650214, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
@@ -905,6 +905,9 @@ MonoBehaviour:
   pairsText: {fileID: 671972446}
   maxTime: 120
   revealDuration: 1
+  menuSceneName: Menu
+  gameSceneName: Game scene
+  endSceneName: End
 --- !u!4 &1149148659
 Transform:
   m_ObjectHideFlags: 0
@@ -1016,7 +1019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1334668163
 RectTransform:
   m_ObjectHideFlags: 0

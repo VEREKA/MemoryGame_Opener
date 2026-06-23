@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerCard : MonoBehaviour
 {
@@ -30,10 +31,16 @@ public class GameManagerCard : MonoBehaviour
     [SerializeField] private float maxTime = 120f;
     [SerializeField] private float revealDuration = 1f;
     private int lastDisplayedMs = -1;
+    private bool isInitialized = false;
 
     public Sprite[] CardFaces => cardFaces;
     public Sprite CardBack => cardBack;
     public float MaxTime => maxTime;
+
+    [Header("Scene Names")]
+    [SerializeField] private string menuSceneName = "Menu";
+    [SerializeField] private string gameSceneName = "Game scene";
+    [SerializeField] private string endSceneName = "End";
 
     private void Awake()
     {
@@ -49,6 +56,12 @@ public class GameManagerCard : MonoBehaviour
 
     void Start()
     {
+        if (!string.IsNullOrEmpty(gameSceneName) && SceneManager.GetActiveScene().name != gameSceneName)
+        {
+            Debug.Log("GameManagerCard: skipping initialization (not in game scene): " + SceneManager.GetActiveScene().name, this);
+            return;
+        }
+
         cards = new List<Card>();
         cardIDs = new List<int>();
         pairsMatched = 0;
@@ -71,11 +84,14 @@ public class GameManagerCard : MonoBehaviour
         UpdatePairsText();
 
         if (finalUI != null) finalUI.gameObject.SetActive(false);
+        isInitialized = true;
     }
 
     void Update()
     {
-       if (!isGameOver && !isLevelFinished)
+    if (!isInitialized) return;
+
+    if (!isGameOver && !isLevelFinished)
         {
             if (elapsedTime < maxTime)
             {
@@ -177,13 +193,13 @@ public class GameManagerCard : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
-        FinalPanel();
+        LoadEndScene();
     }
 
     void LevelFinished()
     {
         isLevelFinished = true;
-        FinalPanel();
+        LoadEndScene();
     }
 
     public void FinalPanel()
@@ -201,25 +217,27 @@ public class GameManagerCard : MonoBehaviour
 
     public void RestartGame()
     {
-        pairsMatched = 0;
-        elapsedTime = 0f;
-        isGameOver = false;
-        isLevelFinished = false;
-        if (finalUI != null) finalUI.gameObject.SetActive(false);
 
-        UpdatePairsText();
+        if (!string.IsNullOrEmpty(gameSceneName))
+            SceneManager.LoadScene(gameSceneName);
+    }
 
-        foreach (var card in cards)
-        {
-            Destroy(card.gameObject);
-        }
-        cards.Clear();
-        cardIDs.Clear();
+    public void LoadMenuScene()
+    {
+        if (!string.IsNullOrEmpty(menuSceneName))
+            SceneManager.LoadScene(menuSceneName);
+    }
 
-        lastDisplayedMs = -1;
+    public void LoadGameScene()
+    {
+        if (!string.IsNullOrEmpty(gameSceneName))
+            SceneManager.LoadScene(gameSceneName);
+    }
 
-        CreateCards();
-        ShuffleCards();
+    public void LoadEndScene()
+    {
+        if (!string.IsNullOrEmpty(endSceneName))
+            SceneManager.LoadScene(endSceneName);
     }
 
     void UpdateTimerText()
