@@ -6,23 +6,31 @@ using UnityEngine.UI;
 
 public class GameManagerCard : MonoBehaviour
 {
-    public static GameManagerCard Instance;
-    public Card cardPrefab;
-    public Sprite cardBack;
-    public Sprite[] cardFaces;
+    public static GameManagerCard Instance { get; private set; }
+    [SerializeField] private Card cardPrefab;
+    [SerializeField] private Sprite cardBack;
+    [SerializeField] private Sprite[] cardFaces;
     private List<Card> cards;
     private List<int> cardIDs;
-    public Card firstCard, secondCard;
-    public Transform cardHolder;
-    public GameObject finalUI;
-    public TextMeshProUGUI finalText;
-    public TextMeshProUGUI timerText;
+    private Card firstCard, secondCard;
+    public Card FirstCard => firstCard;
+    public Card SecondCard => secondCard;
+    [SerializeField] private Transform cardHolder;
+    [SerializeField] private GameObject finalUI;
+    [SerializeField] private TextMeshProUGUI finalText;
+    [SerializeField] private TextMeshProUGUI timerText;
     private int pairsMatched;
     private int totalPairs;
     private float timer;
     private bool isGameOver;
     private bool isLevelFinished;
-    public float maxTime = 120f;
+    [SerializeField] private float maxTime = 240f;
+    [SerializeField] private float revealDuration = 1f;
+    private int lastDisplayedTime = -1;
+
+    public Sprite[] CardFaces => cardFaces;
+    public Sprite CardBack => cardBack;
+    public float MaxTime => maxTime;
 
     private void Awake()
     {
@@ -47,17 +55,24 @@ public class GameManagerCard : MonoBehaviour
         isGameOver = false;
         isLevelFinished = false;
 
+        if (cardPrefab == null) Debug.LogError("cardPrefab not assigned on GameManagerCard", this);
+        if (cardHolder == null) Debug.LogError("cardHolder not assigned on GameManagerCard", this);
+        if (finalUI == null) Debug.LogError("finalUI not assigned on GameManagerCard", this);
+        if (finalText == null) Debug.LogError("finalText not assigned on GameManagerCard", this);
+        if (timerText == null) Debug.LogError("timerText not assigned on GameManagerCard", this);
+        if (cardFaces == null || cardFaces.Length == 0) Debug.LogError("cardFaces not assigned or empty on GameManagerCard", this);
+
         CreateCards();
         ShuffleCards();
 
-        finalUI.gameObject.SetActive(false);
+        if (finalUI != null) finalUI.gameObject.SetActive(false);
     }
 
     void Update()
     {
        if (!isGameOver && !isLevelFinished)
         {
-            if (timer > 0)
+            if (timer > 0f)
             {
                 timer -= Time.deltaTime;
                 UpdateTimerText();
@@ -81,24 +96,27 @@ public class GameManagerCard : MonoBehaviour
         {
             Card newCard = Instantiate(cardPrefab, cardHolder);
             newCard.gameManager = this;
-            newCard.cardID = id;
+            newCard.CardID = id;
+            newCard.ResetCard();
             cards.Add(newCard);
         }
     }
 
     void ShuffleCards()
     {
-        for (int i = 0; i < cards.Count; i++)
+        int n = cardIDs.Count;
+        for (int i = 0; i < n; i++)
         {
-            int randomIndex = Random.Range(i, cardIDs.Count);
+            int randomIndex = Random.Range(i, n);
             int temp = cardIDs[i];
             cardIDs[i] = cardIDs[randomIndex];
             cardIDs[randomIndex] = temp;
         }
 
-        for (int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < cards.Count && i < cardIDs.Count; i++)
         {
-            cards[i].cardID = cardIDs[i];
+            cards[i].CardID = cardIDs[i];
+            cards[i].ResetCard();
         }
     }
 
@@ -117,9 +135,14 @@ public class GameManagerCard : MonoBehaviour
 
     void CheckMatch()
     {
-        if (firstCard.cardID == secondCard.cardID)
+        if (firstCard.CardID == secondCard.CardID)
         {
             pairsMatched++;
+
+            firstCard.IsMatched = true;
+            secondCard.IsMatched = true;
+            firstCard.SetInteractable(false);
+            secondCard.SetInteractable(false);
 
             if (pairsMatched == totalPairs)
             {
@@ -137,9 +160,9 @@ public class GameManagerCard : MonoBehaviour
 
     IEnumerator FlipBackCards()
     {
-        yield return new WaitForSeconds(1f);
-        firstCard.HideCard();
-        secondCard.HideCard();
+        yield return new WaitForSeconds(revealDuration);
+        if (firstCard != null) firstCard.HideCard();
+        if (secondCard != null) secondCard.HideCard();
         firstCard = null;
         secondCard = null;
     }
@@ -158,14 +181,14 @@ public class GameManagerCard : MonoBehaviour
 
     public void FinalPanel()
     {
-        finalUI.gameObject.SetActive(true);
+        if (finalUI != null) finalUI.gameObject.SetActive(true);
         if (isLevelFinished)
         {
-            finalText.text = "Congratulations! Time Taken: " + Mathf.Round(maxTime - timer) + "s";
+            if (finalText != null) finalText.text = "Congratulations! Time Taken: " + Mathf.Round(maxTime - timer) + "s";
         }
         else if (isGameOver)
         {
-            finalText.text = "Time's up! Try again!";
+            if (finalText != null) finalText.text = "Time's up! Try again!";
         }
     }
 
@@ -175,7 +198,7 @@ public class GameManagerCard : MonoBehaviour
         timer = maxTime;
         isGameOver = false;
         isLevelFinished = false;
-        finalUI.gameObject.SetActive(false);
+        if (finalUI != null) finalUI.gameObject.SetActive(false);
 
         foreach (var card in cards)
         {
@@ -184,13 +207,21 @@ public class GameManagerCard : MonoBehaviour
         cards.Clear();
         cardIDs.Clear();
 
+        lastDisplayedTime = -1;
+
         CreateCards();
         ShuffleCards();
     }
 
     void UpdateTimerText()
     {
-        timerText.text = "Time Left: " + Mathf.Round(timer) + "s";
+        if (timerText == null) return;
+        int display = Mathf.RoundToInt(timer);
+        if (display != lastDisplayedTime)
+        {
+            timerText.text = "Time Left: " + display + "s";
+            lastDisplayedTime = display;
+        }
     }
 
 
