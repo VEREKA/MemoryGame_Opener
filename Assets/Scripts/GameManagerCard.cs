@@ -16,10 +16,12 @@ public class GameManagerCard : MonoBehaviour
     public Card FirstCard => firstCard;
     public Card SecondCard => secondCard;
     [SerializeField] private Transform cardHolder;
+
     [SerializeField] private GameObject finalUI;
     [SerializeField] private TextMeshProUGUI finalText;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI pairsText;
+    
     private int pairsMatched;
     private int totalPairs;
     private float elapsedTime;
