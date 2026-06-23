@@ -19,14 +19,15 @@ public class GameManagerCard : MonoBehaviour
     [SerializeField] private GameObject finalUI;
     [SerializeField] private TextMeshProUGUI finalText;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI pairsText;
     private int pairsMatched;
     private int totalPairs;
-    private float timer;
+    private float elapsedTime;
     private bool isGameOver;
     private bool isLevelFinished;
-    [SerializeField] private float maxTime = 240f;
+    [SerializeField] private float maxTime = 120f;
     [SerializeField] private float revealDuration = 1f;
-    private int lastDisplayedTime = -1;
+    private int lastDisplayedMs = -1;
 
     public Sprite[] CardFaces => cardFaces;
     public Sprite CardBack => cardBack;
@@ -51,7 +52,7 @@ public class GameManagerCard : MonoBehaviour
         pairsMatched = 0;
         totalPairs = cardFaces.Length;
 
-        timer = maxTime;
+        elapsedTime = 0f;
         isGameOver = false;
         isLevelFinished = false;
 
@@ -65,6 +66,8 @@ public class GameManagerCard : MonoBehaviour
         CreateCards();
         ShuffleCards();
 
+        UpdatePairsText();
+
         if (finalUI != null) finalUI.gameObject.SetActive(false);
     }
 
@@ -72,9 +75,9 @@ public class GameManagerCard : MonoBehaviour
     {
        if (!isGameOver && !isLevelFinished)
         {
-            if (timer > 0f)
+            if (elapsedTime < maxTime)
             {
-                timer -= Time.deltaTime;
+                elapsedTime += Time.deltaTime;
                 UpdateTimerText();
             }
             else
@@ -149,6 +152,8 @@ public class GameManagerCard : MonoBehaviour
                 LevelFinished();
             }
 
+            UpdatePairsText();
+
             firstCard = null;
             secondCard = null;
         }
@@ -184,7 +189,7 @@ public class GameManagerCard : MonoBehaviour
         if (finalUI != null) finalUI.gameObject.SetActive(true);
         if (isLevelFinished)
         {
-            if (finalText != null) finalText.text = "Congratulations! Time Taken: " + Mathf.Round(maxTime - timer) + "s";
+            if (finalText != null) finalText.text = "Czas " + FormatTimeMs(elapsedTime);
         }
         else if (isGameOver)
         {
@@ -195,10 +200,12 @@ public class GameManagerCard : MonoBehaviour
     public void RestartGame()
     {
         pairsMatched = 0;
-        timer = maxTime;
+        elapsedTime = 0f;
         isGameOver = false;
         isLevelFinished = false;
         if (finalUI != null) finalUI.gameObject.SetActive(false);
+
+        UpdatePairsText();
 
         foreach (var card in cards)
         {
@@ -207,7 +214,7 @@ public class GameManagerCard : MonoBehaviour
         cards.Clear();
         cardIDs.Clear();
 
-        lastDisplayedTime = -1;
+        lastDisplayedMs = -1;
 
         CreateCards();
         ShuffleCards();
@@ -216,12 +223,27 @@ public class GameManagerCard : MonoBehaviour
     void UpdateTimerText()
     {
         if (timerText == null) return;
-        int display = Mathf.RoundToInt(timer);
-        if (display != lastDisplayedTime)
+        int displayMs = Mathf.FloorToInt(elapsedTime * 1000f);
+        if (displayMs != lastDisplayedMs)
         {
-            timerText.text = "Time Left: " + display + "s";
-            lastDisplayedTime = display;
+            timerText.text = "Czas " + FormatTimeMs(elapsedTime);
+            lastDisplayedMs = displayMs;
         }
+    }
+
+    void UpdatePairsText()
+    {
+        if (pairsText == null) return;
+        pairsText.text = pairsMatched.ToString() + "/" + totalPairs.ToString();
+    }
+
+    string FormatTimeMs(float seconds)
+    {
+        int totalMs = Mathf.FloorToInt(Mathf.Clamp(seconds, 0f, maxTime) * 1000f);
+        int mins = totalMs / 60000;
+        int secs = (totalMs % 60000) / 1000;
+        int ms = totalMs % 1000;
+        return string.Format("{0:00}:{1:00}:{2:000}", mins, secs, ms);
     }
 
 

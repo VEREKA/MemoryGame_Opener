@@ -180,7 +180,7 @@ MonoBehaviour:
   m_CellSize: {x: 150, y: 150}
   m_Spacing: {x: 30, y: 30}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 5
 --- !u!114 &106596931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,8 +727,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
+  m_sharedMaterial: {fileID: -6953417924433650214, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -837,27 +837,26 @@ MonoBehaviour:
   cardPrefab: {fileID: 1916969187695201747, guid: 728ca33152aaea54fbd945de609d33b5, type: 3}
   cardBack: {fileID: 21300000, guid: 9ce821e528d7a1e40b960b6840dbb049, type: 3}
   cardFaces:
-  - {fileID: -4201268287711256361, guid: 8b0c03967c1fec74a905f5ae567074b4, type: 3}
-  - {fileID: -432493022065761110, guid: c3e9a1a22a7d59b4eb56c0a0cb40a289, type: 3}
-  - {fileID: -8787767617194835449, guid: a528f10d98acaa1439d71b54c183eeaf, type: 3}
-  - {fileID: 3918070268755775066, guid: f634e4644dc08e044b074eb896984cd8, type: 3}
-  - {fileID: 21300000, guid: 86084ccce956ea048a455334b2a46a9a, type: 3}
-  - {fileID: 21300000, guid: 4ebc4cd2818313248811c74a554f7c74, type: 3}
-  - {fileID: 21300000, guid: fc4182d608b32a144a633b8422c33f57, type: 3}
-  - {fileID: 21300000, guid: e8250c9b4c6d57e4fb9043ee259ee087, type: 3}
-  - {fileID: 21300000, guid: 1fdfcd09105a8c745bbeb6774549cd40, type: 3}
-  - {fileID: 21300000, guid: 33ea9c36f6614494bb52a2fd93093e7f, type: 3}
-  - {fileID: 21300000, guid: 6b77ef6a5c2ec964c9a2b0836df1ea3f, type: 3}
-  - {fileID: 21300000, guid: f0500acb9f0cb7649840702eb8b24fa6, type: 3}
-  - {fileID: 21300000, guid: 8730fc996c294e74988372a44580bf93, type: 3}
-  - {fileID: 21300000, guid: 67b0a5ec68878d64eb3393b1ee66a337, type: 3}
-  - {fileID: 21300000, guid: b232db3491b6ebb45a3a25acbcf7c6d1, type: 3}
-  - {fileID: 21300000, guid: 973215ed8540f6a4086a828079b502c6, type: 3}
+  - {fileID: 21300000, guid: bf4804969f175cb40b3a8b18fb4f4612, type: 3}
+  - {fileID: 21300000, guid: 9d1e19cd270d0c54582de0bffbe0f8f5, type: 3}
+  - {fileID: 21300000, guid: a2b8c9acf19e0bf4dae34739a78db5c2, type: 3}
+  - {fileID: 21300000, guid: 9c4b16295749a944289ed02cbbb8d21a, type: 3}
+  - {fileID: 21300000, guid: 5b189bc8be71f8e4c8788967545313b4, type: 3}
+  - {fileID: 21300000, guid: d619ef602100dd243af5649f7fae3991, type: 3}
+  - {fileID: 21300000, guid: 9fd5db05fb27bde499faf4213bb70301, type: 3}
+  - {fileID: 21300000, guid: 539833bb72aa6ef419cedcd2f7e19f09, type: 3}
+  - {fileID: 21300000, guid: 414f4e6b27e26804ba1e47860d577aa7, type: 3}
+  - {fileID: 21300000, guid: b7aae2c740a8f1f439fbcf0272a47b0c, type: 3}
+  - {fileID: 21300000, guid: 38da8d850ca7e664a9eb241b122123fe, type: 3}
+  - {fileID: 21300000, guid: e7c55d854db7c3a4f94d801c8bc1dcdc, type: 3}
+  - {fileID: 21300000, guid: a4241c594329c3f49b1b6681fd447755, type: 3}
+  - {fileID: 21300000, guid: b9b19c18fcc423643b7aa5efa07242e7, type: 3}
+  - {fileID: 21300000, guid: 45a60ced8ab04d64dbe8a857e75e93e1, type: 3}
   cardHolder: {fileID: 106596929}
   finalUI: {fileID: 1334668162}
   finalText: {fileID: 2142036117}
   timerText: {fileID: 1038194402}
-  maxTime: 120
+  maxTime: 5
   revealDuration: 1
 --- !u!4 &1149148659
 Transform:
@@ -1358,8 +1357,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
+  m_sharedMaterial: {fileID: -6953417924433650214, guid: 7ec7c398f3186654aafc183e52ff64db, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1383,7 +1382,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
