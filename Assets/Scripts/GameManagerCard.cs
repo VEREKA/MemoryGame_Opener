@@ -167,6 +167,10 @@ public class GameManagerCard : MonoBehaviour
 
             if (pairsMatched == totalPairs)
             {
+                GameSession.LastRunSuccess = true;
+                GameSession.LastElapsedTime = elapsedTime;
+                GameSession.LastPairsMatched = pairsMatched;
+                GameSession.LastTotalPairs = totalPairs;
                 LevelFinished();
             }
 
@@ -193,6 +197,10 @@ public class GameManagerCard : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
+        GameSession.LastRunSuccess = false;
+        GameSession.LastElapsedTime = elapsedTime;
+        GameSession.LastPairsMatched = pairsMatched;
+        GameSession.LastTotalPairs = totalPairs;
         LoadEndScene();
     }
 
