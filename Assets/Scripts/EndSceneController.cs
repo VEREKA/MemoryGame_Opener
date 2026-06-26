@@ -28,7 +28,8 @@ public class EndSceneController : MonoBehaviour
             {
                 string timeStr = FormatTimeMs(GameSession.LastElapsedTime);
                 successMessageText.text = successTemplate.Replace("{nick}", nick).Replace("{time}", timeStr);
-                SendResultToBrowser(nick, timeStr);
+                int timeMs = Mathf.FloorToInt(Mathf.Max(0f, GameSession.LastElapsedTime) * 1000f);
+                SendResultToBrowser(nick, timeMs.ToString());
             }
         }
         else
