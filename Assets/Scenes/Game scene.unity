@@ -172,15 +172,15 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 300
+    m_Top: 375
     m_Bottom: 20
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 150}
-  m_Spacing: {x: 30, y: 30}
+  m_CellSize: {x: 185, y: 185}
+  m_Spacing: {x: 20, y: 20}
   m_Constraint: 1
-  m_ConstraintCount: 5
+  m_ConstraintCount: 4
 --- !u!114 &106596931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &671972445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 865, y: -510}
+  m_AnchoredPosition: {x: 820, y: -470}
   m_SizeDelta: {x: 107, y: 51.6387}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &671972446
@@ -748,8 +748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 115, y: -510}
-  m_SizeDelta: {x: 349.5188, y: 87.6944}
+  m_AnchoredPosition: {x: 0, y: -450}
+  m_SizeDelta: {x: 1080, y: 87.6944}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1038194402
 MonoBehaviour:
@@ -798,14 +798,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -895,9 +895,6 @@ MonoBehaviour:
   - {fileID: 508654588180531275, guid: fedcc25418857364297edfe14fe0772d, type: 3}
   - {fileID: 1535849568168867446, guid: 125ffd1486abafd47811d4e108b2c13e, type: 3}
   - {fileID: -2744404044641096361, guid: c1f1241e38df7b44489c628da437d3fe, type: 3}
-  - {fileID: 831539481481709046, guid: 9058c2e2ad6601c4795331dc8bed1cb3, type: 3}
-  - {fileID: -3204942483809121378, guid: 376dbd3d9ebd775418df8954d2c766a0, type: 3}
-  - {fileID: 2211901939401982428, guid: 480909e4049c11a46b4dcbbfa9f362aa, type: 3}
   cardHolder: {fileID: 106596929}
   finalUI: {fileID: 1334668162}
   finalText: {fileID: 2142036117}
