@@ -11,8 +11,12 @@ public class GameManagerCard : MonoBehaviour
     [SerializeField] private Card cardPrefab;
     [SerializeField] private Sprite cardBack;
     [SerializeField] private Sprite[] cardFaces;
+    [Header("Card Selection")]
+    [SerializeField] private int pairsToUse = 8;
+    [SerializeField] private bool useRandomFaces = true;
     private List<Card> cards;
     private List<int> cardIDs;
+    private List<int> selectedFaceIndices;
     private Card firstCard, secondCard;
     public Card FirstCard => firstCard;
     public Card SecondCard => secondCard;
@@ -65,7 +69,8 @@ public class GameManagerCard : MonoBehaviour
         cards = new List<Card>();
         cardIDs = new List<int>();
         pairsMatched = 0;
-        totalPairs = cardFaces.Length;
+        selectedFaceIndices = GetSelectedFaceIndices();
+        totalPairs = selectedFaceIndices.Count;
 
         elapsedTime = 0f;
         isGameOver = false;
@@ -107,10 +112,12 @@ public class GameManagerCard : MonoBehaviour
 
     void CreateCards()
     {
-        for (int i = 0; i < cardFaces.Length; i++)
+        cardIDs.Clear();
+
+        foreach (int faceIndex in selectedFaceIndices)
         {
-            cardIDs.Add(i);
-            cardIDs.Add(i);
+            cardIDs.Add(faceIndex);
+            cardIDs.Add(faceIndex);
         }
 
         foreach (int id in cardIDs)
@@ -265,13 +272,44 @@ public class GameManagerCard : MonoBehaviour
         pairsText.text = pairsMatched.ToString() + "/" + totalPairs.ToString();
     }
 
+    List<int> GetSelectedFaceIndices()
+    {
+        if (cardFaces == null || cardFaces.Length == 0)
+            return new List<int>();
+
+        int pairCount = Mathf.Clamp(pairsToUse, 1, cardFaces.Length);
+        List<int> availableIndices = new List<int>();
+        for (int i = 0; i < cardFaces.Length; i++)
+        {
+            availableIndices.Add(i);
+        }
+
+        List<int> selected = new List<int>();
+
+        if (useRandomFaces)
+        {
+            while (selected.Count < pairCount && availableIndices.Count > 0)
+            {
+                int randomIndex = Random.Range(0, availableIndices.Count);
+                int chosenIndex = availableIndices[randomIndex];
+                availableIndices.RemoveAt(randomIndex);
+                selected.Add(chosenIndex);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < pairCount; i++)
+            {
+                selected.Add(i);
+            }
+        }
+
+        return selected;
+    }
+
     string FormatTimeMs(float seconds)
     {
-        int totalMs = Mathf.FloorToInt(Mathf.Clamp(seconds, 0f, maxTime) * 1000f);
-        int mins = totalMs / 60000;
-        int secs = (totalMs % 60000) / 1000;
-        int ms = totalMs % 1000;
-        return string.Format("{0:00}:{1:00}:{2:000}", mins, secs, ms);
+        return GameSession.FormatTimeMs(seconds, maxTime);
     }
 
 

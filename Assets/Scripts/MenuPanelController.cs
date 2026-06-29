@@ -13,20 +13,28 @@ public class MenuPanelController : MonoBehaviour
 
     void Start()
     {
-        if (firstPanel != null) firstPanel.SetActive(true);
-        if (secondPanel != null) secondPanel.SetActive(false);
+        SetPanelState(firstPanel, true);
+        SetPanelState(secondPanel, false);
     }
 
     public void ShowSecondPanel()
     {
-        if (firstPanel != null) firstPanel.SetActive(false);
-        if (secondPanel != null) secondPanel.SetActive(true);
+        SetPanelState(firstPanel, false);
+        SetPanelState(secondPanel, true);
     }
 
     public void ShowFirstPanel()
     {
-        if (secondPanel != null) secondPanel.SetActive(false);
-        if (firstPanel != null) firstPanel.SetActive(true);
+        SetPanelState(secondPanel, false);
+        SetPanelState(firstPanel, true);
+    }
+
+    private void SetPanelState(GameObject panel, bool active)
+    {
+        if (panel != null)
+        {
+            panel.SetActive(active);
+        }
     }
 
     public void SaveNickAndPlay()

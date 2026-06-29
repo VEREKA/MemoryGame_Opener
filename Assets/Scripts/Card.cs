@@ -8,9 +8,17 @@ public class Card : MonoBehaviour
     private bool isFlipped;
     [SerializeField] private bool isMatched = false;
     [SerializeField] private Image cardImage;
+    private Button cardButton;
+    private Collider2D cardCollider;
 
     public int CardID { get => cardID; set => cardID = value; }
     public bool IsMatched { get => isMatched; set => isMatched = value; }
+
+    void Awake()
+    {
+        cardButton = GetComponent<Button>();
+        cardCollider = GetComponent<Collider2D>();
+    }
 
     void Start()
     {
@@ -32,9 +40,10 @@ public class Card : MonoBehaviour
             gameManager = GameManagerCard.Instance;
         }
 
-        if (GameManagerCard.Instance != null && cardImage != null)
+        var currentGameManager = gameManager ?? GameManagerCard.Instance;
+        if (currentGameManager != null && cardImage != null)
         {
-            cardImage.sprite = GameManagerCard.Instance.CardBack;
+            cardImage.sprite = currentGameManager.CardBack;
         }
 
         SetInteractable(true);
@@ -42,30 +51,30 @@ public class Card : MonoBehaviour
 
     public void SetInteractable(bool enabled)
     {
-        var btn = GetComponent<UnityEngine.UI.Button>();
-        if (btn != null) btn.interactable = enabled;
+        if (cardButton != null) cardButton.interactable = enabled;
 
-        var col = GetComponent<Collider2D>();
-        if (col != null) col.enabled = enabled;
+        if (cardCollider != null) cardCollider.enabled = enabled;
     }
 
     public void FlipCard()
     {
         if (IsMatched) return;
         if (gameManager == null) gameManager = GameManagerCard.Instance;
-        if (!isFlipped && gameManager != null && (gameManager.FirstCard == null || gameManager.SecondCard == null))
+
+        var currentGameManager = gameManager ?? GameManagerCard.Instance;
+        if (!isFlipped && currentGameManager != null && (currentGameManager.FirstCard == null || currentGameManager.SecondCard == null))
         {
             isFlipped = true;
-            if (cardImage != null && gameManager.CardFaces != null && cardID >= 0 && cardID < gameManager.CardFaces.Length)
-                cardImage.sprite = gameManager.CardFaces[cardID];
-            gameManager.CardFlipped(this);
+            if (cardImage != null && currentGameManager.CardFaces != null && cardID >= 0 && cardID < currentGameManager.CardFaces.Length)
+                cardImage.sprite = currentGameManager.CardFaces[cardID];
+            currentGameManager.CardFlipped(this);
         }
     }
 
     public void HideCard()
     {
         isFlipped = false;
-        if (gameManager != null && cardImage != null)
-            cardImage.sprite = gameManager.CardBack;
+        if ((gameManager ?? GameManagerCard.Instance) != null && cardImage != null)
+            cardImage.sprite = (gameManager ?? GameManagerCard.Instance).CardBack;
     }
 }

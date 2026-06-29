@@ -21,12 +21,11 @@ public class EndSceneController : MonoBehaviour
         bool success = GameSession.LastRunSuccess;
         if (success)
         {
-            if (successPanel != null) successPanel.SetActive(true);
-            if (failPanel != null) failPanel.SetActive(false);
+            SetActivePanel(successPanel, failPanel);
 
             if (successMessageText != null)
             {
-                string timeStr = FormatTimeMs(GameSession.LastElapsedTime);
+                string timeStr = GameSession.FormatTimeMs(GameSession.LastElapsedTime);
                 successMessageText.text = successTemplate.Replace("{nick}", nick).Replace("{time}", timeStr);
                 int timeMs = Mathf.FloorToInt(Mathf.Max(0f, GameSession.LastElapsedTime) * 1000f);
                 SendResultToBrowser(nick, timeMs.ToString());
@@ -34,8 +33,7 @@ public class EndSceneController : MonoBehaviour
         }
         else
         {
-            if (failPanel != null) failPanel.SetActive(true);
-            if (successPanel != null) successPanel.SetActive(false);
+            SetActivePanel(failPanel, successPanel);
 
             if (messageText != null)
             {
@@ -58,13 +56,10 @@ public class EndSceneController : MonoBehaviour
 #endif
     }
 
-    string FormatTimeMs(float seconds)
+    void SetActivePanel(GameObject activePanel, GameObject inactivePanel)
     {
-        int totalMs = Mathf.FloorToInt(Mathf.Max(0f, seconds) * 1000f);
-        int mins = totalMs / 60000;
-        int secs = (totalMs % 60000) / 1000;
-        int ms = totalMs % 1000;
-        return string.Format("{0:00}:{1:00}:{2:000}", mins, secs, ms);
+        if (activePanel != null) activePanel.SetActive(true);
+        if (inactivePanel != null) inactivePanel.SetActive(false);
     }
 
 #if UNITY_WEBGL && !UNITY_EDITOR
