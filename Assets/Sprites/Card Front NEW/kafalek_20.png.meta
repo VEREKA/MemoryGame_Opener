@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ab21761617f63b4d9cbc6027b816cf9
+guid: d37c2c0a95a6096449c07bf920ab82a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3625860452324696699
-    second: kafelek_18_0
+      213: -9205156815310006816
+    second: kafalek_20_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kafelek_18_0
+      name: kafalek_20_0
       rect:
         serializedVersion: 2
         x: 1
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 58d9c06112b5eadc0800000000000000
-      internalID: -3625860452324696699
+      spriteID: 0e55ea1c5a6b04080800000000000000
+      internalID: -9205156815310006816
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kafelek_18_0: -3625860452324696699
+      kafalek_20_0: -9205156815310006816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

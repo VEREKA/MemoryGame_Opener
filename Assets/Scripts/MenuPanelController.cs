@@ -21,12 +21,21 @@ public class MenuPanelController : MonoBehaviour
     {
         SetPanelState(firstPanel, false);
         SetPanelState(secondPanel, true);
+        ActivateNickInput();
     }
 
     public void ShowFirstPanel()
     {
         SetPanelState(secondPanel, false);
         SetPanelState(firstPanel, true);
+    }
+
+    void ActivateNickInput()
+    {
+        if (nickInput == null) return;
+
+        nickInput.Select();
+        nickInput.ActivateInputField();
     }
 
     private void SetPanelState(GameObject panel, bool active)

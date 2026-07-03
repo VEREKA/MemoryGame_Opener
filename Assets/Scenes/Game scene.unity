@@ -899,9 +899,10 @@ MonoBehaviour:
   - {fileID: -3204942483809121378, guid: 376dbd3d9ebd775418df8954d2c766a0, type: 3}
   - {fileID: 2211901939401982428, guid: 480909e4049c11a46b4dcbbfa9f362aa, type: 3}
   - {fileID: 4609681054607336023, guid: 519a6cc4e2c5ebf4ebfb696642bfd2a4, type: 3}
-  - {fileID: -3625860452324696699, guid: 0ab21761617f63b4d9cbc6027b816cf9, type: 3}
-  - {fileID: 3056529298781888675, guid: d39a8fc9bf7d76f4b9f615bf6a9bdc4d, type: 3}
-  - {fileID: -3070511260962661132, guid: 663151d8bc8bf40418026ebb7f94f1e7, type: 3}
+  - {fileID: 2971295350531060259, guid: d8dd4264d42d1d54fbfab8822b73c7ef, type: 3}
+  - {fileID: 4484455104328392069, guid: f0e2cc55c1ad25545bba9fbedd92dee6, type: 3}
+  - {fileID: 4433752446855102218, guid: fa5da4ccad9d7f7418452c59a4b4c23d, type: 3}
+  - {fileID: -9205156815310006816, guid: d37c2c0a95a6096449c07bf920ab82a0, type: 3}
   pairsToUse: 12
   useRandomFaces: 1
   cardHolder: {fileID: 106596929}
@@ -909,7 +910,7 @@ MonoBehaviour:
   finalText: {fileID: 2142036117}
   timerText: {fileID: 1038194402}
   pairsText: {fileID: 671972446}
-  maxTime: 120
+  maxTime: 180
   revealDuration: 1
   menuSceneName: Menu
   gameSceneName: Game scene

@@ -32,7 +32,7 @@ public class GameManagerCard : MonoBehaviour
     private float elapsedTime;
     private bool isGameOver;
     private bool isLevelFinished;
-    [SerializeField] private float maxTime = 120f;
+    [SerializeField] private float maxTime = 180f;
     [SerializeField] private float revealDuration = 1f;
     private int lastDisplayedMs = -1;
     private bool isInitialized = false;
