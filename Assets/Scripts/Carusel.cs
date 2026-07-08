@@ -4,10 +4,10 @@ public class Carousel : MonoBehaviour
 {
     [Header("Ustawienia Karuzeli")]
     public RectTransform[] images;
-    public float speed = 150f;
-    public float horizontalSpacing = 300f;
-    public float verticalOffset = 50f;
-    public float leftResetX = -400f;
+    public float speed = 50f;
+    public float horizontalSpacing = 200f;
+    public float verticalOffset = 20f;
+    public float leftResetX = -550f;
 
     private float jumpDistance;
 

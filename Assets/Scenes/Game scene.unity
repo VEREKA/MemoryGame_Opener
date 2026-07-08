@@ -180,7 +180,7 @@ MonoBehaviour:
   m_CellSize: {x: 185, y: 185}
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 1
-  m_ConstraintCount: 4
+  m_ConstraintCount: 8
 --- !u!114 &106596931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 820, y: -470}
+  m_AnchoredPosition: {x: 1660, y: -360}
   m_SizeDelta: {x: 107, y: 51.6387}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &671972446
@@ -748,7 +748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -470}
+  m_AnchoredPosition: {x: 170, y: -360}
   m_SizeDelta: {x: 308, y: 87.6944}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1038194402
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
