@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: acd91f2ed65fb4d43aa11cea7f7cbffc
+guid: 81f47269f6c47fd4389da524e8961697
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4928304450749363584
-    second: samoorange_end 1_0
+      213: 5559683420616481739
+    second: menu_image_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: samoorange_end 1_0
+      name: menu_image_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1080
-        height: 1920
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08574e369cad46440800000000000000
-      internalID: 4928304450749363584
+      spriteID: bcb59755d96f72d40800000000000000
+      internalID: 5559683420616481739
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      samoorange_end 1_0: 4928304450749363584
+      menu_image_0: 5559683420616481739
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

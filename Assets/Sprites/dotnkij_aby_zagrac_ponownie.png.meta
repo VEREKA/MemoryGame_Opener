@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dc85bc2343feeb14b95673853f2c8d3e
+guid: e732dc58eb36dcc4b8c30dbbbe149e75
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -428972061195714877
-    second: Game_0
+      213: 8995171884519030968
+    second: dotnkij_aby_zagrac_ponownie_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Game_0
+      name: dotnkij_aby_zagrac_ponownie_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1080
-        height: 1920
+        width: 802
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cebcd1ee2cfb0af0800000000000000
-      internalID: -428972061195714877
+      spriteID: 8b08656ab2545dc70800000000000000
+      internalID: 8995171884519030968
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Game_0: -428972061195714877
+      dotnkij_aby_zagrac_ponownie_0: 8995171884519030968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
